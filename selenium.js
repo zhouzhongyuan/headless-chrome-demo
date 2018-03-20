@@ -10,6 +10,7 @@ const chromeCapabilities = webdriver.Capabilities.chrome();
 chromeCapabilities.set('chromeOptions', {
     // binary: PATH_TO_CANARY, // Screenshots require Chrome 60. Force Canary.
     'args': [
+        '--window-size=412,732',
         '--disable-gpu',
         '--headless',
     ]
@@ -21,10 +22,10 @@ const driver = new webdriver.Builder()
     .build();
 
 // Navigate to google.com, enter a search.
-driver.get('https://www.google.com/');
-driver.findElement({name: 'q'}).sendKeys('张雷洪');
-driver.findElement({name: 'btnG'}).click();
-driver.wait(webdriver.until.titleIs('张雷洪 - Google Search'), 10*1000);
+driver.get('http://127.0.0.1');
+// driver.findElement({name: 'q'}).sendKeys('张雷洪');
+// driver.findElement({name: 'btnG'}).click();
+// driver.wait(webdriver.until.titleIs('张雷洪 - Google Search'), 10*1000);
 
 // Take screenshot of results page. Save to disk.
 driver.takeScreenshot().then(base64png => {
